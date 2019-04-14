@@ -17,7 +17,7 @@ l_cols = list(date         = readr::col_date("%m/%d/%y"),
               team_pts     = "i",
               opponent_pts = "i")
 
-df_logs = readr::read_csv("data/knicks-gamelog.csv", col_types = l_cols)
+df_logs = readr::read_csv("data/warriors-gamelog.csv", col_types = l_cols)
 df_logs = as.data.table(df_logs)
 
 # add some NBA stats ------------------------------------------------------
@@ -58,7 +58,7 @@ a1 = a1 + scale_fill_brewer(palette = "RdYlGn", drop = FALSE)
 
 a1 = a1 + labs(x = "Score difference",
                y = "",
-               title = "New York Knicks '18-'19 Season",
+               title = "Golden State Warriors '18-'19 Season",
                subtitle = "{df_logs$subtitle[as.integer(frame_along)]}",
                caption = "Data from @cleantheglass")
 
@@ -73,5 +73,5 @@ a1 = a1 + theme(legend.position = "none",
                 axis.ticks.y = element_blank())
 
 # write to file -----------------------------------------------------------
-anim_save("output/knicks.gif", animation = a1, nframes = 150,
+anim_save("output/warriors.gif", animation = a1, nframes = 150,
           end_pause = 5, width = 9, height = 5, res = 100, units = "in")
